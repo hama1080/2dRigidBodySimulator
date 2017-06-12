@@ -1,6 +1,15 @@
+function RenderCircle(context, center_pos, radius, rotation)
+{
+}
+
+function RenderBox(context, center_pos, half_extents, rotation)
+{
+}
+
 onload = function(){
   draw();
 };
+
 
 function draw(){
   var canvas = document.getElementById('canvas');
