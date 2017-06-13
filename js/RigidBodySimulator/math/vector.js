@@ -35,7 +35,7 @@ class Vector{
   }
   equal(rhs)
   {
-    if (this._x == = rhs.x && this._y == = rhs.y){
+    if (this._x === rhs.x && this._y === rhs.y){
       return true;
     }
     else{
@@ -44,7 +44,7 @@ class Vector{
   }
   nequal(rhs)
   {
-    if (this._x != = rhs.x || this._y != = rhs.y){
+    if (this._x !== rhs.x || this._y !== rhs.y){
       return true;
     }
     else{
