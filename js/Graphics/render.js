@@ -25,18 +25,27 @@ function RenderBox(context, center_pos, half_extents, rotation)
 }
 
 onload = function(){
-  draw();
+  RenderLoop();
 };
 
-function draw(){
+function RenderLoop()
+{
   var canvas = document.getElementById('canvas');
   if(!canvas || !canvas.getContext){
     return false;
   }
-
   var ctx = canvas.getContext('2d');
-  center = new Vector(50, 50);
-  half_ex = new Vector(20, 20);
-  RenderBox(ctx, center, half_ex, 0 );
-  RenderCircle(ctx, center, 50, 0);
+  var width = canvas.width;
+  var height = canvas.height;
+
+  var tmpCnt = 0;
+  function draw(){
+    ctx.clearRect(0, 0, width, height);
+    center = new Vector(50, 50);
+    half_ex = new Vector(20 + tmpCnt, 20);
+    RenderBox(ctx, center, half_ex, 0 );
+    RenderCircle(ctx, center, 50, 0);
+    tmpCnt++;
+  }
+  setInterval(draw, 100);
 }
