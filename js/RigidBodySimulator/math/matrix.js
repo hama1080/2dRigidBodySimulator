@@ -77,7 +77,9 @@ class Matrix{
 // angle[rad]
 function CreateRotationMatrix(angle)
 {
-  return new Matrix( Math.cos(angle),-Math.sin(angle), 0,
-                     Math.sin(angle), Math.cos(angle), 0,
-                              0,          0, 1);
+  var c = Math.cos(angle);
+  var s = Math.sin(angle);
+  return new Matrix( c,-s, 0,
+                     s, c, 0,
+                     0, 0, 1);
 }
