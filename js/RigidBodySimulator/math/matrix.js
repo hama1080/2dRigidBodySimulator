@@ -56,6 +56,7 @@ class Matrix{
     );
   }
 
+  // matrix * matrix
   mul(rhs)
   {
     return new Matrix(
@@ -71,6 +72,15 @@ class Matrix{
       this._a20 * rhs.a01 + this._a21 * rhs.a11 + this._a22 * rhs.a21 ,
       this._a20 * rhs.a02 + this._a21 * rhs.a12 + this._a22 * rhs.a22
     );
+  }
+
+  //matrix * vector2d
+  multiple_vec(vec, z = 0)
+  {
+    return new Vector(
+      this._a00 * vec.x + this._a01 * vec.y + this._a02 * z,
+      this._a10 * vec.x + this._a11 * vec.y + this._a12 * z);
+      // this._a20 * vec.x + this._a21 * vec.y + this.a_22 * z //vector is 2d vector
   }
 }
 
