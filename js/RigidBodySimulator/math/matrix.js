@@ -73,3 +73,11 @@ class Matrix{
     );
   }
 }
+
+// angle[rad]
+function CreateRotationMatrix(angle)
+{
+  return new Matrix( Math.cos(angle),-Math.sin(angle), 0,
+                     Math.sin(angle), Math.cos(angle), 0,
+                              0,          0, 1);
+}
