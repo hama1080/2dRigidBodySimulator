@@ -5,6 +5,13 @@ class RigidBodyShape{
   }
 }
 
+class RigidBodyCollidable{
+  constructor(shape, center, half){
+    this._shape = new RigidBodyShape(shape);
+    this._AABB = new AABB(center, half);
+  }
+}
+
 class RigidBodyProperty{
   constructor(inertia = 0, mass = 0, restitution = 0, friction = 0){
     this._inertia = inertia;
