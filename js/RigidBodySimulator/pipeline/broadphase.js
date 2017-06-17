@@ -1,3 +1,10 @@
+function CheckIntersectAABB(centerA, halfA, centerB, halfB)
+{
+  if(Math.abs(centerA.x - centerB.x) > (halfA.x + halfB.x)) return false;
+  if(Math.abs(centerA.y - centerB.y) > (halfA.y + halfB.y)) return false;
+  return true;
+}
+
 function BroadPhase(
   state_array,
   collidable_array,
