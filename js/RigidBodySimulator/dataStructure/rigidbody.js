@@ -10,6 +10,8 @@ class RigidBodyCollidable{
     this._shape = new RigidBodyShape(shape);
     this._AABB = new AABB(center, half);
   }
+  get shape(){return this._shape;}
+  get AABB(){return this._AABB;}
 }
 
 class RigidBodyProperty{

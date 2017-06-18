@@ -21,15 +21,20 @@ function BroadPhase(
       stateB = state_array[j];
       collidableB = collidable_array[i];
 
+      var expand_half = new Vector(0.01, 0.01);
       var rotA = stateA.rot;
       var centerA = stateA.pos + rot.multiple_vec(collidableA.center);
-      //var halfA = //expand AABB
+      var halfA = collidableA.AABB.half +  expand_half; //expand AABB
 
       var rotB = stateB.rot;
       var centerB = stateB.pos + rot.multiple_vec(collidableB.center);
-      //var halfB = //expand AABB
+      var halfB = collidableB.AABB.half + expand_half;  //expand AABB
 
       //check intersect A, B
+      if(CheckIntersectAABB(centerA, halfA, centerB, halfB))
+      {
+        //create pair
+      }
     }
   }
 
