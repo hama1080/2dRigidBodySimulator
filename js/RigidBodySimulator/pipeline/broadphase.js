@@ -8,7 +8,9 @@ function CheckIntersectAABB(centerA, halfA, centerB, halfB)
 function BroadPhase(
   state_array,
   collidable_array,
-  num_rigid_bodie
+  num_rigid_bodie,
+  old_pair_array,
+  old_num_pairs
 )
 {
   //find AABB intersection pair
@@ -42,11 +44,30 @@ function BroadPhase(
       }
     }
   }
-  console.log(pair);
-
-  //sort
 
   //comparison pair
+  var keep_pair_array = [];
+  var new_pair_array = [];
+  var old_i = 0, new_i = 0;
+  while(old_i < old_num_pairs && new_i < pair_array.length)
+  {
+    if(pair_array[new_i].key > old_pair_array[old_i].key)
+    {
+      //remove old contact
+      old_pair_array[old_i].contact = null;
+      old_i++;
+    }
+    else if (pair_array[new_i].key == old_pair_array[old_i].key) {
+      //keep
+      keep_pair_array.push(pair_array[new_i]);
+      old_i++;
+      new_i++;
+    }else{
+      //new
+      new_pair_array.push(pair_array[new_i]);
+      new_i++;
+    }
+  }
 
   //sort
 }

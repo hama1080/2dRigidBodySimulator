@@ -10,4 +10,8 @@ class Pair
     this._contact_info = contact_info;
     key_num++;
   }
+  get key(){return this._key;}
+  get index0(){return this._index0;}
+  get index1(){return this._index1;}
+  get contact_info(){return this._contact_info;}
 }
