@@ -59,14 +59,41 @@ function BroadPhase(
     }
     else if (pair_array[new_i].key == old_pair_array[old_i].key) {
       //keep
-      keep_pair_array.push(pair_array[new_i]);
+      out_keep_pair_array.push(pair_array[new_i]);
       old_i++;
       new_i++;
     }else{
       //new
-      new_pair_array.push(pair_array[new_i]);
+      out_new_pair_array.push(pair_array[new_i]);
       new_i++;
     }
+  }
+
+  if(new_i < pair_array.length){
+    // all new
+    for(; new_i < pair_array.length; new_i++)
+      out_new_pair_array.push(pair_array[new_i]);
+  }else if(old_i < old_num_pairs){
+    // all remove
+    for(; old_i < old_num_pairs; old_i++)
+      old_pair_array[old_i].contact = null;
+  }
+
+  //refresh keep pair
+  for(var i=0; i != out_keep_pair_array.length; i++){
+    //todo
+  }
+
+  //merge pair
+  pair_array = []
+  var num_new_pairs = 0;
+  for(var i=0; i != out_keep_pair_array.length; i++){
+    //out_keep_pair_array[i].type = keep;
+    pair_array.push(out_keep_pair_array[i]);
+  }
+  for(var i=0; i != new_pair_array.length; i++){
+    //out_new_pair_array[i].type = new;
+    pair_array.push(out_new_pair_array[i]);
   }
 
   //sort
